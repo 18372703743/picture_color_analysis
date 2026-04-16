@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>图片颜色分析器</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>图片颜色可视化网页</h1>
+        
+        <div class="controls">
+            <input type="file" id="upload" accept="image/*">
+            <label>聚类 K 值 (5-15): <input type="range" id="kValue" min="5" max="15" value="5"></label>
+            <label>颜色空间: 
+                <select id="colorSpace">
+                    <option value="RGB">RGB</option>
+                    <option value="LAB">LAB</option>
+                </select>
+            </label>
+            <label>图表类型: 
+                <select id="chartType">
+                    <option value="pie">饼图</option>
+                    <option value="bar">柱状图</option>
+                </select>
+            </label>
+            <button onclick="processImage()">开始分析</button>
+        </div>
+
+        <div class="main-content">
+            <div class="image-area">
+                <img id="preview" src="#" alt="预览图" style="display:none; max-width: 400px;">
+                <canvas id="canvas" style="display:none;"></canvas>
+            </div>
+            <div id="chart-container" style="width: 600px; height: 400px;"></div>
+        </div>
+
+        <div id="ai-suggestion">
+            <h3>AI 配色诊断：</h3>
+            <p id="ai-text">等待分析...</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
